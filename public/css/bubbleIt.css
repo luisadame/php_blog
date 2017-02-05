@@ -1,0 +1,33 @@
+.bubbleIt{
+    background-color: #28a842;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    padding: 1em;
+    border-radius: 5px;
+    color: whitesmoke;
+    cursor:pointer;
+    text-align: center;
+}
+.bubbleIt .bubble {
+    background: #1fea48;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border-radius: 50%;
+    opacity: .3;
+    transform: scale(1);
+ 	display: none;
+ 	/*z-index: 1;*/
+}
+.bubbleAnimation{
+	display: block !important;
+	animation: bubbleIt 250ms linear forwards;
+}
+
+@keyframes bubbleIt{
+	0%{transform:scale(1);opacity:0.3;}
+	50%{transform:scale(2);opacity:0.3;}
+	90%{opacity:0.1;}
+	100%{transform:scale(3);opacity: 0;}
+}

@@ -109,8 +109,7 @@
 
 		public static function call_controller($controller, $params = null){
 			
-			$controller_name 	=	explode('@', $controller)[0];
-			$controller_func 	=	explode('@', $controller)[1];
+			list($controller_name, $controller_func) = explode('@', $controller);
 			$controllers_folder =	Config::get('controllers_path');
 			$fullpathtofile 	=	$controllers_folder . '/' . $controller_name . '.php';
 

@@ -1,5 +1,7 @@
 RewriteEngine On
 
+AddType text/css css 
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)/$ /$1 [L,R=301]
 

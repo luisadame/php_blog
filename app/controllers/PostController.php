@@ -3,6 +3,7 @@
 	use App\Views\View as View;
 	use App\Database as DB;
 	use App\Config\Config as Config;
+	use App\Core\Validator\Validator as Validator;
 
 	class PostController {
 
@@ -21,12 +22,16 @@
 			$data['body'] = filter_input(INPUT_POST, 'body');
 			$data['created_at'] = date('Y-m-d H:i:s');
 
-			foreach ($data as $key) {
-				if (empty($key)) {
-					throw new Exception("All fields are required");
-					
-					return False;
-				}
+			$rules = [
+				'title' => 'required',
+				'body' => 'required'
+			];
+
+			$validator = new Validator;
+			$validator->make($data, $rules);
+
+			if(!$validator->passes()){
+				return View::make('new-post', ['ErrorsBag' => $validator->getErrors()]);
 			}
 
 			try {
